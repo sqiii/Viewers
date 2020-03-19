@@ -6,6 +6,7 @@ import Input from './Input';
 import Svg from './Svg';
 import ThemeWrapper from './ThemeWrapper/';
 import Typography from './Typography';
+import OHIFModal from './OHIFModal';
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   Svg,
   ThemeWrapper,
   Typography,
+  OHIFModal,
 };

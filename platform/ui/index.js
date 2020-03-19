@@ -9,6 +9,7 @@ export {
   Input,
   ThemeWrapper,
   Typography,
+  OHIFModal,
 } from './src/components';
 
 export { utils };
