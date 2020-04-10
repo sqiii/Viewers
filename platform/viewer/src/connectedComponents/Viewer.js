@@ -29,8 +29,14 @@ class Viewer extends Component {
           PropTypes.shape({
             displaySetInstanceUID: PropTypes.string.isRequired,
             SeriesDescription: PropTypes.string,
-            SeriesNumber: PropTypes.number,
-            InstanceNumber: PropTypes.number,
+            SeriesNumber: PropTypes.oneOfType([
+              PropTypes.number,
+              PropTypes.string,
+            ]),
+            InstanceNumber: PropTypes.oneOfType([
+              PropTypes.number,
+              PropTypes.string,
+            ]),
             numImageFrames: PropTypes.number,
             Modality: PropTypes.string.isRequired,
             images: PropTypes.arrayOf(
@@ -290,11 +296,11 @@ class Viewer extends Component {
                 activeIndex={this.props.activeViewportIndex}
               />
             ) : (
-                <ConnectedStudyBrowser
-                  studies={this.state.thumbnails}
-                  studyMetadata={this.props.studies}
-                />
-              )}
+              <ConnectedStudyBrowser
+                studies={this.state.thumbnails}
+                studyMetadata={this.props.studies}
+              />
+            )}
           </SidePanel>
 
           {/* MAIN */}
@@ -332,7 +338,7 @@ export default withDialog(Viewer);
  * @param {Study[]} studies
  * @param {DisplaySet[]} studies[].displaySets
  */
-const _mapStudiesToThumbnails = function (studies) {
+const _mapStudiesToThumbnails = function(studies) {
   return studies.map(study => {
     const { StudyInstanceUID } = study;
 
